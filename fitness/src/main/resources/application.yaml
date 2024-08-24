@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: fitness
+  datasource:
+    url: jdbc:mysql://localhost:3306/digital_life?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+logging:
+  level:
+    com.ping.life.fitness.mapper: DEBUG
+    org.mybatis: DEBUG
