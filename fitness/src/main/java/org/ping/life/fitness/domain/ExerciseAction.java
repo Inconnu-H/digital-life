@@ -14,7 +14,6 @@ import java.util.Date;
  * 锻炼动作表
  *
  * @author ping
- * @TableName exercise_action
  */
 @TableName(value = "exercise_action")
 @Data

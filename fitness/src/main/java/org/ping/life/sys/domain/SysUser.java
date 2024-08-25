@@ -14,7 +14,6 @@ import java.util.Date;
  * 用户表
  *
  * @author Ping
- * @TableName sys_user
  */
 @TableName(value = "sys_user")
 @Data

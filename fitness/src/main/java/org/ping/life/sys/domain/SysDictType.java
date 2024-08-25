@@ -14,7 +14,6 @@ import java.util.Date;
  * 系统字典分类表
  *
  * @author ping
- * @TableName sys_dict_type
  */
 @TableName(value = "sys_dict_type")
 @Data
