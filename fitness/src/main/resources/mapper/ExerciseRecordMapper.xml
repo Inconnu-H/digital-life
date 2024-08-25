@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ping.life.fitness.mapper.ExerciseRecordMapper">
+
+    <resultMap id="BaseResultMap" type="org.ping.life.fitness.domain.ExerciseRecord">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="exerciseId" column="exercise_id" jdbcType="BIGINT"/>
+        <result property="date" column="date" jdbcType="DATE"/>
+        <result property="duration" column="duration" jdbcType="INTEGER"/>
+        <result property="sets" column="sets" jdbcType="INTEGER"/>
+        <result property="repetitions" column="repetitions" jdbcType="INTEGER"/>
+        <result property="weight" column="weight" jdbcType="DECIMAL"/>
+        <result property="notes" column="notes" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,user_id,exercise_id,
+        date,duration,sets,
+        repetitions,weight,notes,
+        create_time,update_time
+    </sql>
+</mapper>
