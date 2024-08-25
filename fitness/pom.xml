@@ -8,11 +8,11 @@
         <version>3.3.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.ping</groupId>
-    <artifactId>digital-life</artifactId>
+    <groupId>org.ping.life</groupId>
+    <artifactId>fitness</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fitness</name>
-    <description>数字人生</description>
+    <description>健身模块</description>
 
     <properties>
         <java.version>17</java.version>
