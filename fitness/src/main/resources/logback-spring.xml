@@ -1,0 +1,43 @@
+<configuration>
+    <!-- 定义日志文件的位置和名称 -->
+    <property name="LOG_HOME" value="./logs"/>
+    <property name="LOG_FILE" value="${LOG_HOME}/application.log"/>
+    <property name="LOGBACK_MAX_FILE_SIZE" value="10MB"/>
+    <property name="LOGBACK_TOTAL_SIZE_CAP" value="1GB"/>
+
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 滚动文件输出 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 日志文件按日期滚动 -->
+            <fileNamePattern>${LOG_HOME}/application-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>${LOGBACK_MAX_FILE_SIZE}</maxFileSize>
+            <totalSizeCap>${LOGBACK_TOTAL_SIZE_CAP}</totalSizeCap>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${LOGBACK_MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 定义日志级别 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+    <!-- 继承日志配置 -->
+    <logger name="com.example" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+</configuration>
