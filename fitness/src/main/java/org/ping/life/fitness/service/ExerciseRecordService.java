@@ -1,5 +1,6 @@
 package org.ping.life.fitness.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.ping.life.fitness.domain.ExerciseRecord;
 
@@ -10,4 +11,5 @@ import org.ping.life.fitness.domain.ExerciseRecord;
  */
 public interface ExerciseRecordService extends IService<ExerciseRecord> {
 
+    Page<ExerciseRecord> pageByQuery(ExerciseRecord exerciseRecord, int pageNum, int pageSize);
 }

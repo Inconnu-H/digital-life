@@ -7,6 +7,8 @@ import org.ping.life.fitness.service.ExerciseRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 /**
  * @author Ping
  */
@@ -19,6 +21,9 @@ public class ExerciseRecordController {
 
     @PostMapping
     public ApiResponse<Boolean> createExerciseRecord(@RequestBody ExerciseRecord exerciseRecord) {
+        if (exerciseRecord.getTime() == null) {
+            exerciseRecord.setTime(new Date());
+        }
         return ApiResponse.success(exerciseRecordService.save(exerciseRecord));
     }
 
@@ -28,8 +33,11 @@ public class ExerciseRecordController {
     }
 
     @GetMapping("/list")
-    public ApiResponse<Page<ExerciseRecord>> getExerciseRecordList(ExerciseRecord exerciseRecord, Page<ExerciseRecord> page) {
-        return ApiResponse.success(exerciseRecordService.page(page));
+    public ApiResponse<Page<ExerciseRecord>> getExerciseRecordList(ExerciseRecord exerciseRecord
+            , @RequestParam(required = false) Integer pageNum, @RequestParam(required = false) Integer pageSize) {
+        pageNum = pageNum == null ? 1 : pageNum;
+        pageSize = pageSize == null ? 10 : pageSize;
+        return ApiResponse.success(exerciseRecordService.pageByQuery(exerciseRecord, pageNum, pageSize));
     }
 
     @PutMapping
