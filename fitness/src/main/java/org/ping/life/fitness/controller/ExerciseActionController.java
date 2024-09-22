@@ -28,8 +28,11 @@ public class ExerciseActionController {
     }
 
     @GetMapping("/list")
-    public ApiResponse<Page<ExerciseAction>> getExerciseActionList(ExerciseAction exerciseAction, Page<ExerciseAction> page) {
-        return ApiResponse.success(exerciseActionService.page(page));
+    public ApiResponse<Page<ExerciseAction>> getExerciseActionList(ExerciseAction exerciseAction
+            , @RequestParam(required = false) Integer pageNum, @RequestParam(required = false) Integer pageSize) {
+        pageNum = pageNum == null ? 1 : pageNum;
+        pageSize = pageSize == null ? Integer.MAX_VALUE : pageSize;
+        return ApiResponse.success(exerciseActionService.pageByQuery(exerciseAction, pageNum, pageSize));
     }
 
     @PutMapping
